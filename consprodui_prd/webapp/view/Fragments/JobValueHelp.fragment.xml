@@ -1,0 +1,58 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+	<TableSelectDialog
+		noDataText="No Jobs Found"
+		searchPlaceholder="Search Job by ID, Name, Description, Project Manager"
+		title="Select a JOB"
+		liveChange=".on_liveSearch"
+		search=".on_liveSearch"
+		confirm=".on_JobOK"
+		cancel=".on_JobOK"
+		items="{searchHelp>/Jobs}">
+		<ColumnListItem vAlign="Middle">
+			<cells>
+				<Text text="{searchHelp>ID}" />
+				<Text text="{searchHelp>Name}" />
+				<Text text="{searchHelp>ProjectManager}" />
+				<Text text="{searchHelp>CompanyDescription}" />
+				<Text text="{searchHelp>ProfitCenter}" />
+				<Text text="{searchHelp>Description}" />
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Job ID" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Name" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Project Manager" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Company Name" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Profit Center" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Description" />
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

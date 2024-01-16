@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		noDataText="No Activities Found"
+		title="Select Activities"
+		searchPlaceholder="Search Activity by ID, Name, Permission_ID, and Permission_Name"
+		liveChange="on_ActivitySearchValue"
+		confirm="on_acitivityOK"
+		cancel="on_acitivityOK"
+		contentWidth="30vw"
+		items="{searchHelp>/Activity}">
+		<ColumnListItem vAlign="Middle">
+			<cells>
+				<Text text="{searchHelp>ActivityID}" />
+				<Text text="{searchHelp>ActivityName}" />
+				<!-- <Text text="{searchHelp>PermissionID}" />
+				<Text text="{searchHelp>PermissionName}" /> -->
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Activity ID" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Activity Name" />
+				</header>
+			</Column>
+			<!-- <Column id="_IDGenColumn3a3" minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text id="_IDGenText7a7" text="Permission ID" />
+				</header>
+			</Column>
+			<Column id="_IDGenColumn4a4" minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text id="_IDGenText8a8" text="Permission Name" />
+				</header>
+			</Column> -->
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

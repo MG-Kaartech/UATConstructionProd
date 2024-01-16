@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+	id="workorderid"
+		noDataText="No Work Order Found"
+		title="Select Work Order"
+		searchPlaceholder="Search WO by ID and Description"
+		liveChange="on_WorkorderSearchValue"
+		confirm="on_workOrderOK"
+		cancel="on_workOrderOK"
+		contentWidth="60vw"
+		items="{searchHelp>/WorkOrders}">
+		<ColumnListItem vAlign="Middle">
+			<cells>
+				<Text text="{searchHelp>ID}" />
+				<Text text="{searchHelp>Name}" />
+				<Text text="{searchHelp>CompanyCode}"/>
+				<Text text="{searchHelp>CompanyCodeDescription}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Work Order" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Work Order Description" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Company code" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Company Description" />
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

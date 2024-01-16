@@ -1,0 +1,65 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+	<ResponsivePopover
+		id="myPopover_Equipment"
+        title = "{equip_popover>/EID}-{equip_popover>/FullName}"
+        showHeader="false"
+        contentHeight="14em"
+        contentWidth="22em"
+		placement="HorizontalPreferredRight" >
+        <endButton>
+			<Button id="btn_01_equip" text="close" press=".on_close_PopOver" />
+		</endButton>
+		<content>
+            <f:SimpleForm id="SimpleFormChange354_Equipment"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4"
+                labelSpanL="3"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="4"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false" >
+                <f:content>
+                    <Label text="Equipment ID" />
+                    <Text text="{equip_popover>/EID}" />
+                    <Label text="Description" />
+                    <Text text="{equip_popover>/LastName}" />
+                    <Label text="Permission Level" />
+                    <Text text="{equip_popover>/PermissionLevel}" />
+                </f:content>
+            </f:SimpleForm>
+
+
+
+
+
+
+			<!-- <l:Grid defaultSpan="L12 M12 S12" width="23em" id="idGrid_Equipment">
+                <l:content>
+                    <form:SimpleForm id="SimpleFormDisplay354_Equipment" editable="false" layout="ResponsiveGridLayout" labelSpanL="3"
+                            labelSpanM="3" columnsL="2" columnsM="2">
+                        <form:content>
+                            <Label text="Equipment ID" />
+                            <Text text="{equip_popover>/EID}" />
+                            <Label text="Description" />
+                            <Text text="{equip_popover>/Description}" />
+                            <Label text="Permission Level" />
+                            <Text text="{equip_popover>/PermissionLevel}" />
+                        </form:content>
+                    </form:SimpleForm>
+                </l:content>
+            </l:Grid> -->
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

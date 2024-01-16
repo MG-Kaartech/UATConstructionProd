@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <SelectDialog
+		noDataText="No PayCodes Found"
+		title="Select PayCodes"
+		liveChange=".on_PayCodeSearch"
+		search=".on_PayCodeSearch"
+		searchPlaceholder="Search Paycode"
+		confirm=".on_PayCodeOK"
+		cancel=".on_PayCodeOK"
+		items="{
+			path: 'searchHelp>/PayCodes'
+		}">
+		<StandardListItem
+			title="{searchHelp>PaycodeName}"
+			description="{searchHelp>PaycodeID}"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

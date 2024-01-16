@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <SelectDialog
+		noDataText="No Equipments Found"
+		title="Select an Equipment"
+		liveChange=".on_EquipSearch"
+		search=".on_EquipSearch"
+		searchPlaceholder="Search Equipment"
+		confirm=".on_AddEquipment_Selected"
+		cancel=".on_AddEquipment_Selected"
+		items="{
+			path: 'searchHelp>/Equipments'
+		}">
+		<StandardListItem id="_IDGenStandardListItem1687_equipment_selected_1"
+			title="{searchHelp>LastName}"
+			description="{searchHelp>ID}"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

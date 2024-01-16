@@ -1,0 +1,47 @@
+/* Enter your custom styles here */
+.border_right {
+    border-right: solid;
+    border-color: darkgray;
+}
+
+.Employee_white{
+    background: #ffffff;
+  }
+
+.Equipment_gray {
+    background: #f4f4f4;
+}
+
+.ce_table td:nth-child(odd) {
+    background: #f4f4f4;
+}
+
+.hrs_table td:nth-child(odd) {
+    background: #f4f4f4;
+}
+
+.hrs_table th:nth-child(odd) {
+    background: #f4f4f4;
+}
+
+.sapMIBar.sapMHeader-CTX {
+    color: #1d2d3e;
+    background-color: #fff;
+    filter: none;
+    background-image: url(https://www.municipalgroup.com/sites/municipalGroup/img/municipal-group-logo.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid #ddd !important;
+    padding: 10px !important;
+    object-fit: cover;
+}
+
+.Total_in_red {
+    color : #f30000;
+    font-weight: 700;
+}
+
+/* .row_height tbody tr:first-child {
+    height: 5vh;
+} */
+

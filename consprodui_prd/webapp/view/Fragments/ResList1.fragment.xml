@@ -1,0 +1,99 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+
+	<TableSelectDialog
+		noDataText="No Empoyees Found"
+		searchPlaceholder="Search Employees by ID, Name, Description, Personnel Subarea, Company, and Location"
+		title="Select a Employee"
+		liveChange=".on_empSearch"
+		search=".on_empSearch"
+		confirm=".on_AddEmployee_Selected"
+		cancel=".on_AddEmployee_Selected"
+		items="{
+			path: 'searchHelp>/Employees',
+			sorter : {
+				path : 'FirstName',
+				descending : false
+			}
+		}">
+		<ColumnListItem vAlign="Middle">
+			<cells>
+				<Text text="{searchHelp>ID}" />
+				<Text text="{searchHelp>FirstName}" />
+				<Text text="{searchHelp>LastName}" />
+				<Text text="{searchHelp>JobTitle}" />
+				<Text text="{searchHelp>PersonnelSubAreaDescription}" />
+				<Text text="{searchHelp>CompanyCode}" />
+				<Text text="{searchHelp>CompanyName}" />
+				<Text text="{searchHelp>LocationCodeDescription}" />
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="EmployeeID" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="First Name" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Last Name" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Job Title" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="PSA Description" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Company ID" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Company Description" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Location Description" />
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+
+
+    <!-- <SelectDialog id="_IDGenSelectDialog16"
+		noDataText="No Employees Found"
+		title="Select an Employee"
+		liveChange=".on_liveSearch"
+		search=".on_Search"
+		searchPlaceholder="Search Employee"
+		confirm=".on_EmpOK"
+		cancel=".on_EmpOK"
+		items="{
+			path: 'searchHelp>/Employees',
+			sorter : {
+				path : 'FirstName',
+				descending : false
+			}
+		}">
+		<StandardListItem id="_IDGenStandardListItem16"
+			title="{searchHelp>FirstName}"
+			description="{searchHelp>ID}"
+			type="Active" />
+	</SelectDialog> -->
+</core:FragmentDefinition>

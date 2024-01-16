@@ -1,0 +1,62 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+	<ResponsivePopover
+		id="myPopover"
+        title = "{res_popover>/EID}-{res_popover>/FullName}"
+        showHeader="false"
+        contentHeight="28em"
+        contentWidth="22em"
+		placement="HorizontalPreferredRight" >
+        <endButton>
+			<Button id="btn_01" text="close" press=".on_close_PopOver" />
+		</endButton>
+		<content>  
+            <f:SimpleForm id="SimpleFormChange354wideDual"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4"
+                labelSpanL="3"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="4"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false" >
+                <f:content>
+                    <Label text="Resource ID" />
+                    <Text text="{res_popover>/EID}" />
+
+                    <Label text="Full Name" />
+                    <Text text="{res_popover>/FullName}" />
+
+                    <Label text="Personnel Sub-Area(PSA)" />
+                    <Text text="{res_popover>/PersonnelSubArea}-{res_popover>/PersonnelSubAreaDescription}" />
+
+                    <Label text="Company" />
+                    <Text text="{res_popover>/CompanyID}-{res_popover>/CompanyName}" />
+
+                    <Label text="Province" />
+                    <Text text="{res_popover>/Province}-{res_popover>/ProvinceDescription}" />
+
+                    <Label text="Location Code - Descrption" />
+                    <Text text="{res_popover>/LocationCode} {res_popover>/LocationCodeDescription}" />
+
+                    <Label text="E-Mail" />
+                    <Text text="{res_popover>/Email}" />
+
+                    <Label text="Phone" />
+                    <Text text="{res_popover>/Phone}" />
+                </f:content>
+            </f:SimpleForm>
+
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

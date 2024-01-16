@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <SelectDialog
+		noDataText="No Unit of Measures Found"
+		title="Select an UoM"
+		liveChange=".on_UOM_Search"
+		search=".on_UOM_Search"
+		searchPlaceholder="Search UoM"
+		confirm=".on_uomOK"
+		cancel=".on_uomOK"
+		items="{
+			path: 'searchHelp>/UoMs'
+		}">
+		<StandardListItem
+			title="{searchHelp>externalCode}"
+			description="{searchHelp>externalName}"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,163 @@
+<mvc:View controllerName="com.mgc.consprodui.consproduiprd.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns="sap.m">
+     <f:DynamicPage id="page" showFooter="true" headerPinned="true" toggleHeaderOnTitleClick="false">
+        <f:title>
+            <f:DynamicPageTitle id="_IDGenDynamicPageTitle1" >
+                <f:content>
+                    <HBox id="_IDGenHBox2" alignContent="Center" alignItems="Baseline" width="50vw" justifyContent="SpaceBetween">
+                        <Image id="_IDGenImage1" src="https://www.municipalgroup.com/sites/municipalGroup/img/municipal-group-logo.svg" width="60%" height="70%"/>
+                        <VBox id="_IDGenHBox3" alignContent="Center" justifyContent="Center">
+                            <Title id="_IDGenTitle1" text="Crew Timesheet" />
+                        </VBox>
+                    </HBox>
+                </f:content>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader id="dyn_page_header_01">
+                <f:content>
+                    <l:HorizontalLayout id="_IDGenHorizontalLayout1"  class="sapUiLargeMarginEnd"  >
+                        <Label id="_IDGenLabel3" text="Date :"  class="sapUiTinyMarginTop sapUiSmallMarginEnd" />
+                        <DatePicker id="idDatePicker"
+                            value="{
+                                path: 'header>/date' ,
+                                type: 'sap.ui.model.type.Date',
+                                'formatOptions': {
+                                    'pattern': 'dd/MM/y'
+                                }
+                            }"
+                            maxDate="{header>/maxDate}"
+                            valueFormat="MM/dd/y" showCurrentDateButton="true"
+                            change=".on_DateChange"
+                        />
+                        <Button id="_cpy_button_2" class="sapUiTinyMarginBegin" type="Emphasized" text="Copy Previous Day" icon="sap-icon://copy" visible="true" press=".on_CopyPreviousDay" />                    
+                    </l:HorizontalLayout>
+
+                    <OverflowToolbar id="toolbar_1" style="Clear">
+                        <MenuButton type="Transparent" id="_IDGenMenuButton1" text="Cost Objects">
+                            <menu>
+                                <Menu id="_IDGenMenu1">
+                                    <MenuItem id="_IDGenMenuItem10" text="Hide PayCode" icon="sap-icon://hide" press=".on_MenuAction" />
+                                    <MenuItem id="_IDGenMenuItem1" text="Hide WBS" icon="sap-icon://hide"  press=".on_MenuAction"/>
+                                    <MenuItem id="_IDGenMenuItem2" text="Hide Work Order" icon="sap-icon://hide"  press=".on_MenuAction"/>
+                                    <MenuItem id="_IDGenMenuItem3" text="Hide Cost Center" icon="sap-icon://hide"  press=".on_MenuAction"/>
+                                    <MenuItem id="_IDGenMenuItem4" text="Hide Equipment" icon="sap-icon://hide"  press=".on_MenuAction"/>
+                                    <MenuItem id="_IDGenMenuItem5" text="Hide All" icon="sap-icon://hide"  press=".on_MenuAction"/>
+                                    <MenuItem id="_IDGenMenuItem6" text="Show All" icon="sap-icon://show"  press=".on_MenuAction"/>
+                                </Menu>
+                            </menu>
+                        </MenuButton>
+                        <Button id="add_1" type="Transparent" icon="sap-icon://add" text="Work Hours" press=".on_Add_CostElement"/>
+                        <Button id="add_2" type="Transparent" icon="sap-icon://add-employee" text="Employee" press=".on_AddEmployee"/>
+                        <Button id="add_3" type="Transparent" icon="sap-icon://add-equipment" text="Equipment" press=".on_AddEquipment"/>
+                        <Button id="delete_1" type="Transparent" icon="sap-icon://delete" text="Employee/Equipment" press=".on_DeleteResource"/>
+                        <Button id="export_1" type="Transparent" icon="sap-icon://download" text="Download" press=".on_Download_Excel"/>
+                    </OverflowToolbar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content >
+
+        <Panel id="_IDGenPanel1" width="auto" class="sapUiResponsiveMargin">
+                <content> 
+
+                    <HBox id="_IDGenHBox1" width="100%" >
+                        <VBox id="_IDGenVBox1" width="33%" >
+                            <!-- This is a static Table - No data is needed from the below table -->
+                            <Table id="_IDGenTable1" items="{ path:'tabel_1>/static_table', factory:'.static_factory'}" class="border_right row_height">
+                                <columns>
+                                    <Column id="_IDGenColumn119" minScreenWidth="Tablet" demandPopin="true" hAlign="Right"></Column>
+                                </columns>
+                            </Table>
+
+                            <!-- Resource data table -->
+                            <Table id="_IDGenTable4" items="{path:'resource>/',factory:'.resource_factory'}" multiSelectMode="SelectAll" mode="MultiSelect" class="border_right" rememberSelections="false">
+                                <columns>
+                                    <Column id="col_1" minScreenWidth="Tablet" demandPopin="true" width="12em" hAlign="Center">
+                                        <Text id="_IDGenText4" text="Employee/Equipment"></Text>
+                                    </Column>
+                                    <Column id="_IDGenColumn1199" minScreenWidth="Tablet" demandPopin="true" hAlign="Right" width="7em">
+                                        <Text id="_IDGenText1199" text="Total Hrs"></Text>
+                                    </Column>
+                                </columns>
+                            </Table>
+
+                            <!-- Static Total Hour Text -->
+                            <Table id="_IDGenTable6" items="{path:'static2>/', factory:'.static2_factory'}" class="border_right">
+                                <columns>
+                                    <Column id="_IDGenColumn001" minScreenWidth="Tablet" width="12em" demandPopin="true" hAlign="Right">
+                                    </Column>
+                                </columns>
+                            </Table>
+                        </VBox>
+
+                        <VBox id="_IDGenVBox2" width="67%" >
+                            <ScrollContainer id="_IDGenScrollContainer1" height="auto" width="auto" vertical="true" focusable="true" >
+                                <!-- Cost Element Table -->
+                                <Table id="_IDGenTable2" items="{path:'table_11>/', factory:'.headerInput_factory'}" class="ce_table">
+                                    <columns>
+                                        <Column id="_IDGenColumn1" minScreenWidth="Tablet" width="12em" demandPopin="true" hAlign="Right" class="new_class"></Column>
+                                    </columns>
+                                </Table>
+
+                                <!-- Employee Hours Table -->
+                                <Table id="_IDGenTable3" items="{path:'table_2>/',factory:'.hours_factory'}" class="hrs_table">
+                                    <columns>
+                                        <Column id="col_11" minScreenWidth="Tablet" width="12em" demandPopin="true">
+                                            <Text id="_IDGenText6" text="Hours"></Text>
+                                        </Column>
+                                    </columns>
+                                </Table>
+
+                                <!-- Total Hours Table - Template -->
+                                <Table id="_IDGenTable5" items="{path:'tt_hours>/',factory:'.total_hours_factory'}" class="hrs_table">
+                                    <columns>
+                                        <Column id="_IDGenColumn1190" minScreenWidth="Tablet" width="12em" demandPopin="true" hAlign="Initial">
+                                        </Column>
+                                    </columns>
+                                </Table>
+                            
+                            </ScrollContainer>
+                        </VBox>   
+                    </HBox> 
+                </content>
+            </Panel>
+        </f:content>
+
+        <f:footer> 
+            <OverflowToolbar id="toolbar_2">
+            
+                <GenericTag id="awaiting_tag" text="Awaiting Approval" status="Warning" visible="false" />
+                <GenericTag id="approved_tag" text="Approved" status="Success" visible="false" />
+                <GenericTag id="rejected_tag" text="Rejected" status="Error" visible="false" />
+
+                <ToolbarSpacer id="01"/>
+                <Button id="button_2_1" type="Emphasized" visible="false" text="Save Modified" press=".on_SaveModified" icon="sap-icon://save" />
+                <Button id="button_accept_1" type="Success"
+                    text="Re-submit Modified"
+                    press=".on_SubmitModified"
+                    visible="false"
+                    enabled="false"
+                    ariaDescribedBy="acceptButtonDescription genericButtonDescription"/>
+
+                <Button id="button_2" type="Emphasized" text="Save" press=".on_Submit" icon="sap-icon://save" />
+                <Button id="button_accept" type="Success"
+                    text="Save + Submit"
+                    press=".on_Submit"
+                    ariaDescribedBy="acceptButtonDescription genericButtonDescription"/>
+                <Button id="button_reject" type="Reject"
+                    icon="sap-icon://sys-cancel-2"
+                    text="Cancel"
+                    press=".on_Cancel"
+                    ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
+            </OverflowToolbar>
+		</f:footer>
+    </f:DynamicPage>
+</mvc:View>

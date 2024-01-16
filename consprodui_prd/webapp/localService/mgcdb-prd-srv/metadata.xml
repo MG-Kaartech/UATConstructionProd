@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="mgc.srv.MgcDbService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Employees_prd" EntityType="mgc.srv.MgcDbService.Employees_prd"/>
+                <EntitySet Name="Job_prd" EntityType="mgc.srv.MgcDbService.Job_prd"/>
+                <EntitySet Name="Section_prd" EntityType="mgc.srv.MgcDbService.Section_prd"/>
+                <EntitySet Name="Phase_prd" EntityType="mgc.srv.MgcDbService.Phase_prd"/>
+                <EntitySet Name="WorkOrder_prd" EntityType="mgc.srv.MgcDbService.WorkOrder_prd"/>
+                <EntitySet Name="Equipment_prd" EntityType="mgc.srv.MgcDbService.Equipment_prd"/>
+                <EntitySet Name="TimeSheetDetails_prd" EntityType="mgc.srv.MgcDbService.TimeSheetDetails_prd"/>
+                <EntitySet Name="TimeSheetDetailsCpi_prd" EntityType="mgc.srv.MgcDbService.TimeSheetDetailsCpi_prd"/>
+                <EntitySet Name="PayRollHeader_prd" EntityType="mgc.srv.MgcDbService.PayRollHeader_prd"/>
+                <EntitySet Name="Activities_prd" EntityType="mgc.srv.MgcDbService.Activities_prd"/>
+                <EntitySet Name="RtOt_prd" EntityType="mgc.srv.MgcDbService.RtOt_prd"/>
+                <EntitySet Name="WbsElement_prd" EntityType="mgc.srv.MgcDbService.WbsElement_prd"/>
+            </EntityContainer>
+            <EntityType Name="Employees_prd">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="LoginName"/>
+                    <PropertyRef Name="FirstName"/>
+                    <PropertyRef Name="LastName"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="LoginName" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ResourceType" Type="Edm.String" MaxLength="32"/>
+                <Property Name="Ot_Threshold" Type="Edm.String" MaxLength="6"/>
+                <Property Name="Ot_Frequency" Type="Edm.String" MaxLength="20"/>
+                <Property Name="JobTitle" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FirstDay" Type="Edm.String" MaxLength="10"/>
+                <Property Name="LastDay" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Phone" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Locale" Type="Edm.String" MaxLength="15"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CompanyName" Type="Edm.String" MaxLength="50"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="20"/>
+                <Property Name="PositionManagerEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PositionManagerID" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PersonnelSubArea" Type="Edm.String" MaxLength="20"/>
+                <Property Name="PersonnelSubAreaDescription" Type="Edm.String" MaxLength="51"/>
+                <Property Name="LocationCode" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LocationCodeDescription" Type="Edm.String" MaxLength="51"/>
+                <Property Name="Province" Type="Edm.String" MaxLength="20"/>
+                <Property Name="ProvinceDescription" Type="Edm.String" MaxLength="51"/>
+                <Property Name="JobRelationship" Type="Edm.String" MaxLength="40"/>
+                <Property Name="JobRelationshipEmail" Type="Edm.String" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="Job_prd">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.String" MaxLength="12" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="51"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="6"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Permissions" Type="Edm.String" MaxLength="15"/>
+                <Property Name="ProjectManager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ProjectManagerEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CompanyID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CompanyDescription" Type="Edm.String" MaxLength="25"/>
+                <Property Name="StartDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="30"/>
+            </EntityType>
+            <EntityType Name="Section_prd">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.String" MaxLength="15" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="51"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="6"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Permissions" Type="Edm.String" MaxLength="23"/>
+                <Property Name="ProjectManager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ProjectManagerEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CompanyID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CompanyDescription" Type="Edm.String" MaxLength="25"/>
+                <Property Name="StartDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Jobs" Type="Edm.String" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="Phase_prd">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="51"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="6"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Permissions" Type="Edm.String" MaxLength="23"/>
+                <Property Name="ProjectManager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ProjectManagerEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CompanyID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CompanyDescription" Type="Edm.String" MaxLength="25"/>
+                <Property Name="StartDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Section" Type="Edm.String" MaxLength="15"/>
+            </EntityType>
+            <EntityType Name="WorkOrder_prd">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.String" MaxLength="23" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="51"/>
+                <Property Name="OrderType" Type="Edm.String" MaxLength="4"/>
+                <Property Name="OrderTypeDescription" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4"/>
+                <Property Name="PlantDescription" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CompanyCodeDescription" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Date" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="Equipment_prd">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="LoginName" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="6"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="51"/>
+                <Property Name="PermissionLevel" Type="Edm.String" MaxLength="25"/>
+                <Property Name="ResourceType" Type="Edm.String" MaxLength="9"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="TimeSheetDetails_prd">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="AppName"/>
+                    <PropertyRef Name="Date"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="AppName" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="Date" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="EmployeeID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EmployeeName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="EquipmentID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EquipmentDescription" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Job" Type="Edm.String" MaxLength="75"/>
+                <Property Name="JobDescription" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Section" Type="Edm.String" MaxLength="75"/>
+                <Property Name="SectionDescription" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Phase" Type="Edm.String" MaxLength="75"/>
+                <Property Name="PhaseDescription" Type="Edm.String" MaxLength="80"/>
+                <Property Name="WorkOrder" Type="Edm.String" MaxLength="75"/>
+                <Property Name="WorkorderDescription" Type="Edm.String" MaxLength="80"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="75"/>
+                <Property Name="PayCode" Type="Edm.String" MaxLength="15"/>
+                <Property Name="InTime" Type="Edm.String" MaxLength="15"/>
+                <Property Name="OutTime" Type="Edm.String" MaxLength="15"/>
+                <Property Name="ActualInOutHrs" Type="Edm.String" MaxLength="8"/>
+                <Property Name="Qty" Type="Edm.String" MaxLength="4"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Position" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PositionManagerName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PositionManagerEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ProjectManagerName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ProjectManagerEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SaveSubmitStatus" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ManagerApprovalStatus" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PayrollApprovalStatus" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Activity" Type="Edm.String" MaxLength="75"/>
+                <Property Name="ReceivingUnitTruck" Type="Edm.String" MaxLength="10"/>
+                <Property Name="SendingUnitTrailer" Type="Edm.String" MaxLength="10"/>
+                <Property Name="TotalHours" Type="Edm.String" MaxLength="8"/>
+                <Property Name="PreviousHours" Type="Edm.String" MaxLength="8"/>
+                <Property Name="Comments" Type="Edm.String" MaxLength="100"/>
+                <Property Name="ApproverComments" Type="Edm.String" MaxLength="100"/>
+                <Property Name="PayrollComments" Type="Edm.String" MaxLength="100"/>
+                <Property Name="SalariedEmployee" Type="Edm.String" MaxLength="3"/>
+                <Property Name="PersonnelSubArea" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LocationCode" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Province" Type="Edm.String" MaxLength="20"/>
+                <Property Name="MgrApprovalDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="MgrApprovalTime" Type="Edm.String" MaxLength="8"/>
+                <Property Name="PayrollApprDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PayrollApprTime" Type="Edm.String" MaxLength="8"/>
+                <Property Name="PayPeriodBeginDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PayPeriodEndDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PayCheckIssueDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ManagerApprovalName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ManagerApprovalEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PayrollApprovalName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PayrollApprovalEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="RegularTime" Type="Edm.String" MaxLength="10"/>
+                <Property Name="OverTime" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CompanyName" Type="Edm.String" MaxLength="75"/>
+                <Property Name="CompanyID" Type="Edm.String" MaxLength="20"/>
+                <Property Name="OtThreshold" Type="Edm.String" MaxLength="10"/>
+                <Property Name="UpdateIndicator" Type="Edm.String" MaxLength="1"/>
+                <Property Name="SequenceNo" Type="Edm.String" MaxLength="65"/>
+                <Property Name="PlannedStartTime" Type="Edm.String" MaxLength="10"/>
+                <Property Name="TotalHoursPercentage" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="TimeSheetDetailsCpi_prd">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="AppName"/>
+                    <PropertyRef Name="Date"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="AppName" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="Date" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="EmployeeID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EmployeeName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="EquipmentID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EquipmentDescription" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Job" Type="Edm.String" MaxLength="75"/>
+                <Property Name="JobDescription" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Section" Type="Edm.String" MaxLength="75"/>
+                <Property Name="SectionDescription" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Phase" Type="Edm.String" MaxLength="75"/>
+                <Property Name="PhaseDescription" Type="Edm.String" MaxLength="80"/>
+                <Property Name="WorkOrder" Type="Edm.String" MaxLength="75"/>
+                <Property Name="WorkorderDescription" Type="Edm.String" MaxLength="80"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="75"/>
+                <Property Name="PayCode" Type="Edm.String" MaxLength="15"/>
+                <Property Name="InTime" Type="Edm.String" MaxLength="15"/>
+                <Property Name="OutTime" Type="Edm.String" MaxLength="15"/>
+                <Property Name="ActualInOutHrs" Type="Edm.String" MaxLength="8"/>
+                <Property Name="Qty" Type="Edm.String" MaxLength="4"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Position" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PositionManagerName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PositionManagerEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ProjectManagerName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ProjectManagerEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SaveSubmitStatus" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ManagerApprovalStatus" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PayrollApprovalStatus" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Activity" Type="Edm.String" MaxLength="75"/>
+                <Property Name="ReceivingUnitTruck" Type="Edm.String" MaxLength="10"/>
+                <Property Name="SendingUnitTrailer" Type="Edm.String" MaxLength="10"/>
+                <Property Name="TotalHours" Type="Edm.String" MaxLength="8"/>
+                <Property Name="PreviousHours" Type="Edm.String" MaxLength="8"/>
+                <Property Name="Comments" Type="Edm.String" MaxLength="100"/>
+                <Property Name="ApproverComments" Type="Edm.String" MaxLength="100"/>
+                <Property Name="PayrollComments" Type="Edm.String" MaxLength="100"/>
+                <Property Name="SalariedEmployee" Type="Edm.String" MaxLength="3"/>
+                <Property Name="PersonnelSubArea" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LocationCode" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Province" Type="Edm.String" MaxLength="20"/>
+                <Property Name="MgrApprovalDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="MgrApprovalTime" Type="Edm.String" MaxLength="8"/>
+                <Property Name="PayrollApprDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PayrollApprTime" Type="Edm.String" MaxLength="8"/>
+                <Property Name="PayPeriodBeginDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PayPeriodEndDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PayCheckIssueDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ManagerApprovalName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ManagerApprovalEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PayrollApprovalName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PayrollApprovalEmail" Type="Edm.String" MaxLength="40"/>
+                <Property Name="RegularTime" Type="Edm.String" MaxLength="10"/>
+                <Property Name="OverTime" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CompanyName" Type="Edm.String" MaxLength="75"/>
+                <Property Name="CompanyID" Type="Edm.String" MaxLength="20"/>
+                <Property Name="OtThreshold" Type="Edm.String" MaxLength="10"/>
+                <Property Name="UpdateIndicator" Type="Edm.String" MaxLength="1"/>
+                <Property Name="SequenceNo" Type="Edm.String" MaxLength="65"/>
+                <Property Name="PlannedStartTime" Type="Edm.String" MaxLength="10"/>
+                <Property Name="TotalHoursPercentage" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="PayRollHeader_prd">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="FromToDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EmployeeID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EmployeeName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Job" Type="Edm.String" MaxLength="23"/>
+                <Property Name="Section" Type="Edm.String" MaxLength="23"/>
+                <Property Name="Phase" Type="Edm.String" MaxLength="23"/>
+                <Property Name="WorkOrder" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PayCode" Type="Edm.String" MaxLength="15"/>
+            </EntityType>
+            <EntityType Name="Activities_prd">
+                <Key>
+                    <PropertyRef Name="ActivityID"/>
+                    <PropertyRef Name="PermissionID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ActivityID" Type="Edm.String" MaxLength="15" Nullable="false"/>
+                <Property Name="PermissionID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="ActivityName" Type="Edm.String" MaxLength="15"/>
+                <Property Name="PermissionName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="8"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="RtOt_prd">
+                <Key>
+                    <PropertyRef Name="Date"/>
+                    <PropertyRef Name="EmployeeID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="Date" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="EmployeeID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="EmployeeName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TotalHours" Type="Edm.String" MaxLength="8"/>
+                <Property Name="Rt" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Ot" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="WbsElement_prd">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" MaxLength="12" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String" MaxLength="51"/>
+                <Property Name="PROJECTMANAGER" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PROJECTMANAGEREMAIL" Type="Edm.String" MaxLength="40"/>
+                <Property Name="COMPANYID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="COMPANYDESCRIPTION" Type="Edm.String" MaxLength="25"/>
+                <Property Name="ID_1" Type="Edm.String" MaxLength="15"/>
+                <Property Name="NAME_1" Type="Edm.String" MaxLength="51"/>
+                <Property Name="PROJECTMANAGER_1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PROJECTMANAGEREMAIL_1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="JOBS" Type="Edm.String" MaxLength="12"/>
+                <Property Name="ID_2" Type="Edm.String" MaxLength="20"/>
+                <Property Name="NAME_2" Type="Edm.String" MaxLength="51"/>
+                <Property Name="PROJECTMANAGER_2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PROJECTMANAGEREMAIL_2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SECTION" Type="Edm.String" MaxLength="15"/>
+            </EntityType>
+            <Annotations Target="mgc.srv.MgcDbService.Employees_prd/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Employees_prd/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Employees_prd/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Employees_prd/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Employees_prd/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Job_prd/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Job_prd/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Job_prd/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Job_prd/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Job_prd/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Section_prd/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Section_prd/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Section_prd/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Section_prd/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Section_prd/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Phase_prd/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Phase_prd/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Phase_prd/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Phase_prd/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Phase_prd/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WorkOrder_prd/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WorkOrder_prd/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WorkOrder_prd/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WorkOrder_prd/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WorkOrder_prd/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Equipment_prd/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Equipment_prd/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Equipment_prd/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Equipment_prd/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Equipment_prd/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.TimeSheetDetails_prd/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.TimeSheetDetails_prd/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.TimeSheetDetails_prd/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.TimeSheetDetails_prd/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.TimeSheetDetails_prd/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.TimeSheetDetailsCpi_prd/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.TimeSheetDetailsCpi_prd/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.TimeSheetDetailsCpi_prd/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.TimeSheetDetailsCpi_prd/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.TimeSheetDetailsCpi_prd/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.PayRollHeader_prd/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.PayRollHeader_prd/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.PayRollHeader_prd/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.PayRollHeader_prd/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.PayRollHeader_prd/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Activities_prd/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Activities_prd/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Activities_prd/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Activities_prd/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.Activities_prd/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.RtOt_prd/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.RtOt_prd/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.RtOt_prd/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.RtOt_prd/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.RtOt_prd/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.EntityContainer/WbsElement_prd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="ID: ID"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/NAME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="NAME: NAME"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/PROJECTMANAGER" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="PROJECTMANAGER: PROJECTMANAGER"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/PROJECTMANAGEREMAIL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="PROJECTMANAGEREMAIL: PROJECTMANAGEREMAIL"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/COMPANYID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="COMPANYID: COMPANYID"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/COMPANYDESCRIPTION" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="COMPANYDESCRIPTION: COMPANYDESCRIPTION"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/ID_1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="ID_1: ID_1"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/NAME_1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="NAME_1: NAME_1"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/PROJECTMANAGER_1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="PROJECTMANAGER_1: PROJECTMANAGER_1"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/PROJECTMANAGEREMAIL_1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="PROJECTMANAGEREMAIL_1: PROJECTMANAGEREMAIL_1"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/JOBS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="JOBS: JOBS"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/ID_2" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="ID_2: ID_2"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/NAME_2" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="NAME_2: NAME_2"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/PROJECTMANAGER_2" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="PROJECTMANAGER_2: PROJECTMANAGER_2"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/PROJECTMANAGEREMAIL_2" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="PROJECTMANAGEREMAIL_2: PROJECTMANAGEREMAIL_2"/>
+            </Annotations>
+            <Annotations Target="mgc.srv.MgcDbService.WbsElement_prd/SECTION" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="SECTION: SECTION"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
